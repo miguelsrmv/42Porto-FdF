@@ -21,7 +21,7 @@ t_map_data	get_map_data(char *input_map)
 
 	input_fd = open(input_map, O_RDONLY);
 	if (input_fd == -1)
-		exit_error(OPEN_ERROR, NULL, NULL);
+		exit_error(OPEN_ERROR, NULL, NULL, NULL);
 	line = trim_line(get_next_line(input_fd));
 	map_data.x = count_size(line);
 	map_data.y = 0;
@@ -36,7 +36,7 @@ t_map_data	get_map_data(char *input_map)
 		line = trim_line(get_next_line(input_fd));
 	}
 	if (close(input_fd) == -1)
-		exit_error(CLOSE_ERROR, total_buffer, NULL);
+		exit_error(CLOSE_ERROR, NULL, total_buffer, NULL);
 	get_min_and_max(&map_data, total_buffer);
 	return (map_data);
 }

@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 22:53:09 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/09 23:00:53 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void		consider_hex_data(t_pixel *pixel_data, char **split_total_buffer,
 char		*corrected_hex(char *number);
 
 /// Exit_error.c
-void		exit_error(int exit_code, char *buffer1, char *buffer2);
+void		exit_error(int exit_code, t_pixel *pixel_data,
+				char *buffer1, char *buffer2);
 
 /// Helpers
 void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);

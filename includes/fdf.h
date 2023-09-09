@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 20:09:52 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:38:24 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,26 +63,20 @@ int					count_size(char *line);
 void				get_min_and_max(t_map_dimensions *map_dimensions, char *total_buffer);
 char 				*trim_line(char *line);
 
-
-
 // Fill_data
 void	fill_pixel_data (t_pixel *pixel_data, t_map_dimensions map_dimensions, char *input_map);
 void	fill_from_buffer(t_pixel *pixel_data, t_map_dimensions map_dimensions, char **split_total_buffer);
 void	consider_hex_data(t_pixel *pixel_data, char *split_total_buffer, int i);
-
-
-//void	read_dimensions_from_file(int input_fd, char *line, t_map_dimensions *map_dimensions);
+char	*corrected_hex(char *number);
 
 /// Helpers
 void    print_buffered_data(t_pixel *pixel_data, t_map_dimensions map_dimensions);
-/// Valid_map
+
 /*
+/// Valid_map
 void    check_valid_map(char *input);
 void    check_name(char *input);
 void    check_size(char *input);
 */
-// int		**create_voxel(char *input);
-// void	init_coordinates(t_coordinates *coordinates);
-//int		**malloc_voxel(char *input, t_coordinates *coordinates);
 
 #endif

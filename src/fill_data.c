@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 19:00:29 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 20:10:34 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:37:19 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	fill_from_buffer(t_pixel *pixel_data, t_map_dimensions map_dimensions, char
 void	consider_hex_data(t_pixel *pixel_data, char *split_total_buffer, int i)
 {
 	char **tiny_buffer;
+	char	*hex;
 
 	if (!ft_strchr(split_total_buffer, ','))
 	{
@@ -75,7 +76,31 @@ void	consider_hex_data(t_pixel *pixel_data, char *split_total_buffer, int i)
 	{
 		tiny_buffer = ft_split(split_total_buffer, ',');
 		pixel_data[i].z = ft_atoi(tiny_buffer[0]);
-		pixel_data[i].color = ft_atoi_base(&tiny_buffer[1][2], "0123456789ABCDEF");
+		hex = corrected_hex(&tiny_buffer[1][2]);
+		pixel_data[i].color = ft_atoi_base(hex, "0123456789ABCDEF");
+		free(hex);
 		ft_free_tabs((void **)tiny_buffer);
 	}
+}
+
+char	*corrected_hex(char *number)
+{
+	char *corrected_hex;
+	int	i;
+
+	corrected_hex = (char *)malloc(7 * sizeof(char));
+	i = 0;
+	while (i < 7)
+	{
+		corrected_hex[i] = '0';
+		i++;
+	}
+	corrected_hex[7] = '\0';
+	i = 0;
+	while (number[i])
+	{
+		corrected_hex[i] = ft_toupper(number[i]);
+		i++;
+	}
+	return(corrected_hex);
 }

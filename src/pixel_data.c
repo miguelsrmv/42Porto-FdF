@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 19:00:29 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/10 00:00:41 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/10 00:14:05 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,12 @@ char	*corrected_hex(char *number)
 	if (!corrected_hex)
 		return (NULL);
 	i = 0;
-	while (i < 7)
+	while (i < 6)
 	{
 		corrected_hex[i] = '0';
 		i++;
 	}
-	corrected_hex[7] = '\0';
+	corrected_hex[6] = '\0';
 	i = 0;
 	while (number[i])
 	{

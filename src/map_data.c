@@ -25,7 +25,7 @@ t_map_data	get_map_data(char *input_map)
 	line = trim_line(get_next_line(input_fd));
 	map_data.x = count_size(line);
 	map_data.y = 0;
-	total_buffer = NULL;
+	total_buffer = "";
 	while (line)
 	{
 		(map_data.y)++;

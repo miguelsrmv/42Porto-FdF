@@ -26,7 +26,7 @@ t_map_data	get_map_data(char *input_map)
 	map_data.x = count_size(line);
 	map_data.y = 0;
 	total_buffer = ft_strdup("");
-	process_lines(line, input_fd, &map_data, &total_buffer);
+	create_total_buffer(line, input_fd, &map_data, &total_buffer);
 	if (close(input_fd) == -1)
 		exit_error(CLOSE_ERROR, NULL, total_buffer, NULL);
 	get_min_and_max(&map_data, total_buffer);
@@ -34,7 +34,7 @@ t_map_data	get_map_data(char *input_map)
 	return (map_data);
 }
 
-void	process_lines(char *line, int input_fd, t_map_data *map_data,
+void	create_total_buffer(char *line, int input_fd, t_map_data *map_data,
 			char **total_buffer)
 {
 	char		*tmp;

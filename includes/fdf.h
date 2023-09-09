@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 23:56:27 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/10 00:33:05 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		my_pixel_put(t_img *img, int x, int y, int color);
 
 /// Map_data.c
 t_map_data	get_map_data(char *input_map);
-void		process_lines(char *line, int input_fd, t_map_data *map_data,
+void		create_total_buffer(char *line, int input_fd, t_map_data *map_data,
 				char **total_buffer);
 int			count_size(char *line);
 char		*trim_line(char *line);

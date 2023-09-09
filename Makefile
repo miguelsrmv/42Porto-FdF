@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+         #
+#    By: mde-sa-- <mde-sa--@student.42porto.com     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/08 17:24:34 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/09 12:20:53 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,7 @@ NAME	=   fdf
 
 CC      = 	cc
 
-CLAGS   =   -g
-
-SFLAGS  =   -g -Wall -Wextra -Werror 
+CFLAGS   =   -Wall -Wextra -Werror -g
 
 SRCDIR	=	src
 
@@ -26,7 +24,7 @@ LIBFTDIR =  src/libft
 
 MLXDIR  = 	mlx_linux
 
-SRC		=	main.c
+SRC		=	main.c draw.c voxelgrid.c
 
 LIBS 	=   -L$(LIBFTDIR) -lft
 

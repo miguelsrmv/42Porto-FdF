@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-sa-- <mde-sa--@student.42porto.com     +#+  +:+       +#+        */
+/*   By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 12:09:34 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:09:52 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 # define FDF_H
 
 # include <mlx.h>
+# include <fcntl.h>
 # include "libft.h"
+
 
 // Macros
 # define SUCCESS 1
 # define USAGE_ERROR 1
 # define OPEN_ERROR 2
-# defube READ_ERROR 3
+# define READ_ERROR 3
 # define CLOSE_ERROR 4
+# define INVALID_MAP 5 Found wrong line length. Exiting.
+# define MALLOC_ERROR 6
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
@@ -35,28 +39,48 @@ typedef struct s_img {
 	int		endian;
 }				t_img;
 
-typedef struct s_data_data {
+typedef struct s_map_dimensions {
 	int		x;
 	int		y;
 	int		z_min;
 	int		z_max;
-}				t_map_data;
+}				t_map_dimensions;
 
-typedef struct s_pixel_data {
+typedef struct s_pixel {
 	int		x;
 	int 	y;
 	int		z;
 	int		color;
-}				t_pixel_data;
+}				t_pixel;
 
 // Function declarations
 /// Draw.c
 void	my_pixel_put(t_img *img, int x, int y, int color);
 
-/// Voxelgrid.c
-t_map_data	parse_map(char *input_map);
-void	read_from_file(int input_fd, t_map_data *map_data);
+/// Map_dimensions
+t_map_dimensions	get_map_dimensions(char *input_map);
+int					count_size(char *line);
+void				get_min_and_max(t_map_dimensions *map_dimensions, char *total_buffer);
+char 				*trim_line(char *line);
 
+
+
+// Fill_data
+void	fill_pixel_data (t_pixel *pixel_data, t_map_dimensions map_dimensions, char *input_map);
+void	fill_from_buffer(t_pixel *pixel_data, t_map_dimensions map_dimensions, char **split_total_buffer);
+void	consider_hex_data(t_pixel *pixel_data, char *split_total_buffer, int i);
+
+
+//void	read_dimensions_from_file(int input_fd, char *line, t_map_dimensions *map_dimensions);
+
+/// Helpers
+void    print_buffered_data(t_pixel *pixel_data, t_map_dimensions map_dimensions);
+/// Valid_map
+/*
+void    check_valid_map(char *input);
+void    check_name(char *input);
+void    check_size(char *input);
+*/
 // int		**create_voxel(char *input);
 // void	init_coordinates(t_coordinates *coordinates);
 //int		**malloc_voxel(char *input, t_coordinates *coordinates);

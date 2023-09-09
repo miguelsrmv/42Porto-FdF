@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mde-sa-- <mde-sa--@student.42porto.com     +#+  +:+       +#+         #
+#    By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/09 12:20:53 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/09 19:01:10 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFTDIR =  src/libft
 
 MLXDIR  = 	mlx_linux
 
-SRC		=	main.c draw.c voxelgrid.c
+SRC		=	main.c draw.c map_dimensions.c fill_data.c helper.c #valid_map.c
 
 LIBS 	=   -L$(LIBFTDIR) -lft
 

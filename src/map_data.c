@@ -25,20 +25,31 @@ t_map_data	get_map_data(char *input_map)
 	line = trim_line(get_next_line(input_fd));
 	map_data.x = count_size(line);
 	map_data.y = 0;
-	total_buffer = "";
-	while (line)
-	{
-		(map_data.y)++;
-		if (count_size(line) != map_data.x)
-			exit(5);
-		total_buffer = ft_strjoin(total_buffer, line);
-		free(line);
-		line = trim_line(get_next_line(input_fd));
-	}
+	total_buffer = ft_strdup("");
+	process_lines(line, input_fd, &map_data, &total_buffer);
 	if (close(input_fd) == -1)
 		exit_error(CLOSE_ERROR, NULL, total_buffer, NULL);
 	get_min_and_max(&map_data, total_buffer);
+	free(total_buffer);
 	return (map_data);
+}
+
+void	process_lines(char *line, int input_fd, t_map_data *map_data,
+			char **total_buffer)
+{
+	char		*tmp;
+
+	while (line)
+	{
+		(map_data->y)++;
+		if (count_size(line) != map_data->x)
+			exit_error(INVALID_MAP, NULL, *total_buffer, line);
+		tmp = *total_buffer;
+		*total_buffer = ft_strjoin(tmp, line);
+		free(tmp);
+		free(line);
+		line = trim_line(get_next_line(input_fd));
+	}
 }
 
 int	count_size(char *line)
@@ -50,6 +61,7 @@ int	count_size(char *line)
 	size = 0;
 	while (tmp[size])
 		size++;
+	ft_free_tabs((void **)tmp);
 	return (size);
 }
 
@@ -99,5 +111,4 @@ void	get_min_and_max(t_map_data *map_data, char *total_buffer)
 		ft_free_tabs((void **)tiny_buffer);
 	}
 	ft_free_tabs((void **)small_buffer);
-	free(total_buffer);
 }

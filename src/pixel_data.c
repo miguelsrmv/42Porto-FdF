@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 19:00:29 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 23:12:21 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/10 00:00:41 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,26 @@ void	fill_pixel_data(t_pixel *pixel_data, t_map_data map_data,
 {
 	int		input_fd;
 	char	*line;
+	char	*tmp;
 	char	*total_buffer;
-	char	**split_total_buffer;
 
 	input_fd = open(input_map, O_RDONLY);
 	if (input_fd == -1)
 		exit_error(OPEN_ERROR, pixel_data, NULL, NULL);
 	line = trim_line(get_next_line(input_fd));
-	total_buffer = "";
+	total_buffer = ft_strdup("");
 	while (line)
 	{
+		tmp = total_buffer;
 		total_buffer = ft_strjoin(total_buffer, line);
+		free(tmp);
 		free(line);
 		line = trim_line(get_next_line(input_fd));
 	}
 	if (close(input_fd) == -1)
 		exit_error(CLOSE_ERROR, pixel_data, total_buffer, NULL);
-	split_total_buffer = ft_split(total_buffer, ' ');
-	fill_from_buffer(pixel_data, map_data, split_total_buffer);
+	fill_from_buffer(pixel_data, map_data, ft_split(total_buffer, ' '));
 	free(total_buffer);
-	ft_free_tabs((void **)split_total_buffer);
-
 }
 
 void	fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
@@ -63,6 +62,7 @@ void	fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
 		x = 0;
 		y++;
 	}
+	ft_free_tabs((void **)split_total_buffer);
 }
 
 void	consider_hex_data(t_pixel *pixel_data, char **split_total_buffer, int i)

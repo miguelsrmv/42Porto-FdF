@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 23:00:53 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/09 23:24:44 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,15 @@
 // Macros
 # define SUCCESS 1
 # define USAGE_ERROR 1
+# define USAGE_ERROR_MSG "Usage: ./fdf <map_file>"
 # define OPEN_ERROR 2
-# define READ_ERROR 3
-# define CLOSE_ERROR 4
-# define INVALID_MAP 5
-# define MALLOC_ERROR 6
+# define OPEN_ERROR_MSG "Error opening file."
+# define CLOSE_ERROR 3
+# define CLOSE_ERROR_MSG "Error closing file."
+# define INVALID_MAP 4
+# define INVALID_MAP_MSG "Found wrong line length. Exiting."
+# define MALLOC_ERROR 5
+# define MALLOC_ERROR_MSG "Malloc error."
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 

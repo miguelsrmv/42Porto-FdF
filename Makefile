@@ -6,7 +6,7 @@
 #    By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/09 23:07:18 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/09 23:27:37 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=   fdf
 
 CC      = 	cc
 
-CFLAGS   =   -Wall -Wextra -Werror -g
+CFLAGS   =  -Wall -Wextra -Werror -g
 
 SRCDIR	=	src
 

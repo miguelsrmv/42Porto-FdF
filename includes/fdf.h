@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/10 00:33:05 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:49:40 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@
 
 // Struct typedefs
 /// Image data
-typedef struct s_img {
+typedef struct s_img_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_img;
+}				t_img_data;
 
 typedef struct s_map_data {
 	int		x;
@@ -60,7 +60,7 @@ typedef struct s_pixel {
 
 // Function declarations
 /// Draw.c
-void		my_pixel_put(t_img *img, int x, int y, int color);
+void		my_pixel_put(t_img_data *img, int x, int y, int color);
 
 /// Map_data.c
 t_map_data	get_map_data(char *input_map);
@@ -82,6 +82,10 @@ char		*corrected_hex(char *number);
 /// Exit_error.c
 void		exit_error(int exit_code, t_pixel *pixel_data,
 				char *buffer1, char *buffer2);
+
+///Window.c
+void	start_service(t_pixel *pixel_data, t_map_data map_data);
+void	draw_image(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
 
 /// Helpers
 void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);

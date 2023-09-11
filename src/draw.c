@@ -6,13 +6,13 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:37:01 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/09 23:20:59 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:45:16 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	my_pixel_put(t_img *img, int x, int y, int color)
+void	my_pixel_put(t_img_data *img, int x, int y, int color)
 {
 	char	*target;
 

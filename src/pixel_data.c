@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 19:00:29 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/10 00:14:05 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/13 22:22:06 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	fill_pixel_data(t_pixel *pixel_data, t_map_data map_data,
 	if (close(input_fd) == -1)
 		exit_error(CLOSE_ERROR, pixel_data, total_buffer, NULL);
 	fill_from_buffer(pixel_data, map_data, ft_split(total_buffer, ' '));
+	calculate_isometric(pixel_data, map_data, ANGLE);
 	free(total_buffer);
 }
 

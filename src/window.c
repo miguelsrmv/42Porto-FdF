@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/11 17:03:47 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/13 22:27:27 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_image(t_pixel *pixel_data, t_map_data map_data, t_img_data img)
 	j = 20;
 	while (i < (map_data.x * map_data.y))
 	{
-		my_pixel_put(&img, (pixel_data[i].x) * j, (pixel_data[i].y) * j, pixel_data[i].color);
+		my_pixel_put(&img, (pixel_data[i].real_x) * j, (pixel_data[i].real_y) * j, pixel_data[i].color);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/11 16:49:40 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/13 22:22:23 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "libft.h"
-
+# include <math.h>
 
 // Macros
 # define SUCCESS 1
@@ -33,6 +33,7 @@
 # define MALLOC_ERROR_MSG "Malloc error."
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
+# define ANGLE 30
 
 // Struct typedefs
 /// Image data
@@ -55,6 +56,8 @@ typedef struct s_pixel {
 	int		x;
 	int		y;
 	int		z;
+	int		real_x;
+	int		real_y;
 	int		color;
 }				t_pixel;
 
@@ -78,6 +81,10 @@ void		fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
 void		consider_hex_data(t_pixel *pixel_data, char **split_total_buffer,
 				int i);
 char		*corrected_hex(char *number);
+
+// Calculations.c
+void		calculate_isometric(t_pixel *pixel_data, t_map_data map_data, int angle);
+int			degree_to_rad(int angle);
 
 /// Exit_error.c
 void		exit_error(int exit_code, t_pixel *pixel_data,

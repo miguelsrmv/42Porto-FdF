@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 08:27:20 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/15 20:03:03 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:08:10 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	if (!pixel_data)
 		exit_error(MALLOC_ERROR, NULL, NULL, NULL);
 	fill_pixel_data(pixel_data, &map_data, argv[1]);
-	// print_buffered_data(pixel_data, map_data);
+	print_buffered_data(pixel_data, map_data);
 	start_service(pixel_data, map_data);
 	free(pixel_data);
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/16 15:43:23 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:59:30 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,15 @@ void	pseudo_draw_line_for_row(t_pixel *pixel_data, t_map_data map_data, void *ml
 	i = row * map_data.x;
 	while (i < ((row * map_data.x) + map_data.x))
 	{
-		pseudo_line_bresenhaim(pixel_data[i], pixel_data[i + 1], mlx_service, mlx_win);
+		if (i + 1 < ((row * map_data.x) + map_data.x))
+			pseudo_line_bresenhaim(pixel_data[i], pixel_data[i + 1], mlx_service, mlx_win);
 		if (row != map_data.real_height)
 			pseudo_line_bresenhaim(pixel_data[i], pixel_data[i + map_data.x], mlx_service, mlx_win);
+		i++;
+	}
+	while (i < ((row * map_data.x) + map_data.x) + map_data.x - 1)
+	{
+		pseudo_line_bresenhaim(pixel_data[i], pixel_data[i + 1], mlx_service, mlx_win);
 		i++;
 	}
 }
@@ -155,7 +161,7 @@ void	pseudo_line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, void *mlx_serv
 		if (current_x < pixel_to.real_x)
 			current_x++;
 		else
-			current_x--;
+			current_x = current_x - 2;
 		mlx_pixel_put(mlx_service, mlx_win, current_x + PADDING, current_y + PADDING, pixel_from.color);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/16 12:03:09 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:20:24 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	draw_pixels(pixel_data, map_data, img);
-	draw_lines(pixel_data, map_data, img);
+	// draw_lines(pixel_data, map_data, img);
 	mlx_put_image_to_window(mlx_service, mlx_win, img.img,
 		PADDING, PADDING);
 	mlx_loop(mlx_service);

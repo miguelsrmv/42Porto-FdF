@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/13 22:22:23 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/16 11:10:32 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 # define ANGLE 30
+# define PADDING 50
+# define DISTANCE 20
 
 // Struct typedefs
 /// Image data
@@ -50,6 +52,8 @@ typedef struct s_map_data {
 	int		y;
 	int		z_min;
 	int		z_max;
+	int		real_width;
+	int		real_height;
 }				t_map_data;
 
 typedef struct s_pixel {
@@ -74,7 +78,7 @@ char		*trim_line(char *line);
 void		get_min_and_max(t_map_data *map_data, char *total_buffer);
 
 // Pixel_data.c
-void		fill_pixel_data(t_pixel *pixel_data, t_map_data map_data,
+void		fill_pixel_data(t_pixel *pixel_data, t_map_data *map_data,
 				char *input_map);
 void		fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
 				char **split_total_buffer);
@@ -83,19 +87,31 @@ void		consider_hex_data(t_pixel *pixel_data, char **split_total_buffer,
 char		*corrected_hex(char *number);
 
 // Calculations.c
-void		calculate_isometric(t_pixel *pixel_data, t_map_data map_data, int angle);
-int			degree_to_rad(int angle);
+void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
+				double angle);
+double 		degree_to_rad(double angle);
+void		adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data);
+void		adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data);
+
 
 /// Exit_error.c
 void		exit_error(int exit_code, t_pixel *pixel_data,
 				char *buffer1, char *buffer2);
 
 ///Window.c
-void	start_service(t_pixel *pixel_data, t_map_data map_data);
-void	draw_image(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
+void		start_service(t_pixel *pixel_data, t_map_data map_data);
+void		draw_pixels(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
+void	draw_lines(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
+void		draw_line_for_row(t_pixel *pixel_data, t_map_data map_data, t_img_data img, int row);
+void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, t_img_data img);
+
+
+
 
 /// Helpers
 void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);
+void		draw_horizontal_line(t_img_data *img, t_map_data map_data, int y);
+void		draw_vertical_line(t_img_data *img, t_map_data map_data, int x);
 
 /*
 /// Valid_map

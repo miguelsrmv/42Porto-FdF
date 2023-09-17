@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/16 15:40:55 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/17 21:33:09 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,15 @@ typedef struct s_pixel {
 	int		color;
 }				t_pixel;
 
+typedef struct s_bresenhaim {
+	int	current_x;
+	int current_y;
+	int delta_x;
+	int delta_y;
+	int decision;
+	int steep;
+}		t_bresenhaim;
+
 // Function declarations
 /// Draw.c
 void		my_pixel_put(t_img_data *img, int x, int y, int color);
@@ -102,13 +111,10 @@ void		exit_error(int exit_code, t_pixel *pixel_data,
 void		start_service(t_pixel *pixel_data, t_map_data map_data);
 void		draw_pixels(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
 void		draw_lines(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
-void		draw_line_for_row(t_pixel *pixel_data, t_map_data map_data, t_img_data img, int row);
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, t_img_data img);
-void		pseudo_draw_lines(t_pixel *pixel_data, t_map_data map_data, void *mlx_service, void *mlx_win);
-void		pseudo_draw_line_for_row(t_pixel *pixel_data, t_map_data map_data, void *mlx_service, void *mlx_win, int row);
-void		pseudo_line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, void *mlx_service, void *mlx_win);
-
-
+void		plot_line_point(t_img_data img, t_bresenhaim b, int color);
+void		init_bresenham(t_bresenhaim *b, t_pixel *pixel_from, t_pixel *pixel_to);
+void		update_coordinates(t_bresenhaim *b, t_pixel pixel_from, t_pixel pixel_to);
 
 /// Helpers
 void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);

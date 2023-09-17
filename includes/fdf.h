@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/17 21:33:09 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/17 21:53:04 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ typedef struct s_pixel {
 }				t_pixel;
 
 typedef struct s_bresenhaim {
-	int	current_x;
-	int current_y;
-	int delta_x;
-	int delta_y;
-	int decision;
-	int steep;
+	int		current_x;
+	int		current_y;
+	int		delta_x;
+	int		delta_y;
+	int		decision;
+	int		steep;
 }		t_bresenhaim;
 
 // Function declarations
@@ -98,10 +98,9 @@ char		*corrected_hex(char *number);
 // Calculations.c
 void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
 				double angle);
-double 		degree_to_rad(double angle);
+double		degree_to_rad(double angle);
 void		adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data);
 void		adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data);
-
 
 /// Exit_error.c
 void		exit_error(int exit_code, t_pixel *pixel_data,
@@ -109,12 +108,19 @@ void		exit_error(int exit_code, t_pixel *pixel_data,
 
 ///Window.c
 void		start_service(t_pixel *pixel_data, t_map_data map_data);
-void		draw_pixels(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
-void		draw_lines(t_pixel *pixel_data, t_map_data map_data, t_img_data img);
-void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, t_img_data img);
+void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
+				t_img_data img);
+void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
+				t_img_data img);
+
+/// Bresenhaim.c
+void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,
+				t_img_data img);
 void		plot_line_point(t_img_data img, t_bresenhaim b, int color);
-void		init_bresenham(t_bresenhaim *b, t_pixel *pixel_from, t_pixel *pixel_to);
-void		update_coordinates(t_bresenhaim *b, t_pixel pixel_from, t_pixel pixel_to);
+void		init_bresenham(t_bresenhaim *b, t_pixel *pixel_from,
+				t_pixel *pixel_to);
+void		update_coordinates(t_bresenhaim *b, t_pixel pixel_from,
+				t_pixel pixel_to);
 
 /// Helpers
 void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);

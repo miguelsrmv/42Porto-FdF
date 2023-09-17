@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:15:57 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/17 19:54:47 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/17 22:02:09 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ void	ft_free_tabs(void **tab);
 int		ft_atoi_base(char *str, char *base);
 void	ft_int_swap(int *a, int *n);
 int		ft_abs(int a);
+void	ft_swap(void *a, void *b, size_t size);
 #endif

@@ -6,14 +6,14 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 22:21:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/16 14:12:42 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:20:58 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 void	calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
-			double angle)
+			double angle, int distance)
 {
 	int	i;
 
@@ -21,9 +21,9 @@ void	calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
 	angle = degree_to_rad(angle);
 	while (i < map_data->x * map_data->y)
 	{
-		pixel_data[i].real_x = ((pixel_data[i].x - pixel_data[i].y) * cos(angle)) * DISTANCE;
+		pixel_data[i].real_x = ((pixel_data[i].x - pixel_data[i].y) * cos(angle)) * distance;
 		pixel_data[i].real_y = ((pixel_data[i].x + pixel_data[i].y) * sin(angle)
-			 - pixel_data[i].z) * DISTANCE;
+			 - pixel_data[i].z) * distance;
 		i++;
 	}
 	i = 0;

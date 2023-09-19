@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/19 14:37:46 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:23:35 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,32 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 	sizey = malloc(sizeof(int));
 	mlx_service = mlx_init();
 	mlx_get_screen_size(mlx_service, sizex, sizey);
-	mlx_win = mlx_new_window(mlx_service, ((*sizex) / 2) + (PADDING * 2),
+	mlx_win = mlx_new_window(mlx_service, ((*sizex) / 2) + (PADDING * 2) + 1,
 			((*sizey) / 2) + (PADDING * 2), "FdF");
-	calculate_projection(pixel_data, &map_data, ANGLE, pixel_distance(sizex, sizey, map_data));
-	img.img = mlx_new_image(mlx_service, ((*sizex) / 2) + 1,
+	img.img = mlx_new_image(mlx_service, ((*sizex) / 2),
 			((*sizey) / 2) + 1);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
+	calculate_projection(pixel_data, &map_data, ANGLE);
+	scale_projection(pixel_data, &map_data, pixel_distance(map_data, sizex, sizey));
 	draw_pixels(pixel_data, map_data, img);
 	draw_lines(pixel_data, map_data, img);
-	free(sizex);
-	free(sizey);
 	mlx_put_image_to_window(mlx_service, mlx_win, img.img,
 		PADDING, PADDING);
 	mlx_loop(mlx_service);
 }
 
-int	pixel_distance(int *sizex, int *sizey, t_map_data map_data)
+int	pixel_distance(t_map_data map_data, int *sizex, int *sizey)
 {
 	int	distance;
 
-	if (((*sizex) / 2) / map_data.x
-		< ((*sizey) / 2) / map_data.y)
-		distance = ((*sizex) / 2) / map_data.x;
+	if (map_data.real_width > map_data.real_height)
+		distance = ((*sizex) / 2) / map_data.real_width;
 	else
-		distance = ((*sizey) / 2) / map_data.y;
-	distance = 10;
-	return (distance);
+		distance = ((*sizey) / 2) / map_data.real_height;
+	free(sizex);
+	free(sizey);
+	return(distance);
 }
 
 void	draw_pixels(t_pixel *pixel_data, t_map_data map_data, t_img_data img)

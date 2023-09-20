@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 18:48:41 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:18:41 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_pixel {
 	int		x;
 	int		y;
 	int		z;
-	double  calc_x;
+	double	calc_x;
 	double	calc_y;
 	int		real_x;
 	int		real_y;
@@ -101,15 +101,18 @@ void		consider_hex_data(t_pixel *pixel_data, char **split_total_buffer,
 				int i);
 char		*corrected_hex(char *number);
 
-// Calculations.c
+// Calculations_Rotation.c
 void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
 				double angle);
-void		resize_projection(t_pixel *pixel_data, t_map_data *map_data, int distance);
-void		center_projection(t_pixel *pixel_data, t_map_data map_data,
-				int *sizex, int *sizey);
-double		degree_to_rad(double angle);
 void		adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data);
 void		adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data);
+double		degree_to_rad(double angle);
+
+// Calculations_Resize_Center.c
+void		resize_projection(t_pixel *pixel_data, t_map_data *map_data,
+				int distance);
+void		center_projection(t_pixel *pixel_data, t_map_data map_data,
+				int *sizex, int *sizey);
 
 /// Exit_error.c
 void		exit_error(int exit_code, t_pixel *pixel_data,
@@ -121,7 +124,7 @@ void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
 void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
-int 		get_scale(t_map_data map_data, int *sizex, int *sizey);
+int			get_scale(t_map_data map_data, int *sizex, int *sizey);
 
 /// Bresenhaim.c
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,

@@ -6,24 +6,22 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:06:14 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:14:38 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:17:10 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	resize_projection(t_pixel *pixel_data, t_map_data *map_data, int distance)
+void	resize_projection(t_pixel *pixel_data, t_map_data *map_data,
+			int distance)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	map_data->final_max_x = INT_MIN;
 	map_data->final_max_y = INT_MIN;
 	map_data->final_min_x = INT_MAX;
 	map_data->final_min_y = INT_MAX;
-	ft_printf("Real Width: %d\n", map_data->real_width);
-	ft_printf("Real Height: %d\n", map_data->real_height);
-	print_buffered_data(pixel_data, *map_data);
 	while (i < map_data->x * map_data->y)
 	{
 		pixel_data[i].real_x = pixel_data[i].calc_x * distance;
@@ -40,7 +38,6 @@ void	resize_projection(t_pixel *pixel_data, t_map_data *map_data, int distance)
 	}
 	map_data->real_width = (map_data->final_max_x - map_data->final_min_x);
 	map_data->real_height = (map_data->final_max_y - map_data->final_min_y);
-	print_buffered_data(pixel_data, *map_data);
 }
 
 void	center_projection(t_pixel *pixel_data, t_map_data map_data,
@@ -48,10 +45,12 @@ void	center_projection(t_pixel *pixel_data, t_map_data map_data,
 {
 	int	i;
 	int	add_x;
-	int add_y;
+	int	add_y;
 
-	add_x = ((((*sizex) / 2) - map_data.real_width) / 2) - map_data.final_min_x;
-	add_y = ((((*sizey) / 2) - map_data.real_height) / 2) - map_data.final_min_y;
+	add_x = ((((*sizex) / 2) - map_data.real_width) / 2)
+		- map_data.final_min_x;
+	add_y = ((((*sizey) / 2) - map_data.real_height) / 2)
+		- map_data.final_min_y;
 	i = 0;
 	while (i < map_data.x * map_data.y)
 	{
@@ -59,5 +58,4 @@ void	center_projection(t_pixel *pixel_data, t_map_data map_data,
 		pixel_data[i].real_y += add_y;
 		i++;
 	}
-	print_buffered_data(pixel_data, map_data);
 }

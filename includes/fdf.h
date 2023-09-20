@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 16:51:07 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:48:41 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ typedef struct s_map_data {
 	int		z_max;
 	int		real_width;
 	int		real_height;
+	int		final_min_x;
+	int		final_max_x;
+	int		final_min_y;
+	int		final_max_y;
 }				t_map_data;
 
 typedef struct s_pixel {
@@ -101,6 +105,8 @@ char		*corrected_hex(char *number);
 void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
 				double angle);
 void		resize_projection(t_pixel *pixel_data, t_map_data *map_data, int distance);
+void		center_projection(t_pixel *pixel_data, t_map_data map_data,
+				int *sizex, int *sizey);
 double		degree_to_rad(double angle);
 void		adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data);
 void		adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data);
@@ -115,7 +121,7 @@ void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
 void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
-int 		get_distance(t_map_data map_data, int *sizex, int *sizey);
+int 		get_scale(t_map_data map_data, int *sizex, int *sizey);
 
 /// Bresenhaim.c
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,

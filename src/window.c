@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 16:53:45 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:04:31 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 	mlx_win = mlx_new_window(mlx_service, ((*sizex) / 2) + (PADDING * 2),
 			((*sizey) / 2) + (PADDING * 2), "FdF");
 	calculate_projection(pixel_data, &map_data, ANGLE);
-	resize_projection(pixel_data, &map_data, get_distance(map_data, sizex, sizey));
+	resize_projection(pixel_data, &map_data, get_scale(map_data, sizex, sizey));
+	center_projection(pixel_data, map_data, sizex, sizey);
 	img.img = mlx_new_image(mlx_service, ((*sizex) / 2) + 1,
 			((*sizey) / 2) + 1);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
@@ -41,17 +42,17 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 	mlx_loop(mlx_service);
 }
 
-int get_distance(t_map_data map_data, int *sizex, int *sizey)
+int get_scale(t_map_data map_data, int *sizex, int *sizey)
 {
 	int width_scale_limit;
 	int height_scale_limit;
 
-	width_scale_limit = ((*sizex) / 2) / map_data.x;
-	height_scale_limit = ((*sizey) / 2) / map_data.y;
+	width_scale_limit = ((*sizex) / 2) / map_data.real_width;
+	height_scale_limit = ((*sizey) / 2) / map_data.real_height;
 	if (width_scale_limit > height_scale_limit)
-		return (height_scale_limit - 1);
+		return (height_scale_limit);
 	else
-		return (width_scale_limit - 1);
+		return (width_scale_limit);
 }
 
 void	draw_pixels(t_pixel *pixel_data, t_map_data map_data, t_img_data img)

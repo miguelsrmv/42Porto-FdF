@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 22:21:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 16:53:34 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:50:06 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,52 @@ void	resize_projection(t_pixel *pixel_data, t_map_data *map_data, int distance)
 		pixel_data[i].real_y = pixel_data[i].calc_y * distance;
 		i++;
 	}
-	print_buffered_data(pixel_data, *map_data);
+	map_data->final_max_x = INT_MIN;
+	map_data->final_max_y = INT_MIN;
+	map_data->final_min_x = INT_MAX;
+	map_data->final_min_y = INT_MAX;
+	i--;
+	while (i >= 0)
+	{
+		if (pixel_data[i].real_x < map_data->final_min_x)
+			map_data->final_min_x = pixel_data[i].real_x;
+		if (pixel_data[i].real_y < map_data->final_min_y)
+			map_data->final_min_y = pixel_data[i].real_y;
+		if (pixel_data[i].real_x > map_data->final_max_x)
+			map_data->final_max_x = pixel_data[i].real_x;
+		if (pixel_data[i].real_y > map_data->final_max_y)
+			map_data->final_max_y = pixel_data[i].real_y;
+		i--;
+	}
+	map_data->real_width = (map_data->final_max_x - map_data->final_min_x);
+	map_data->real_height = (map_data->final_max_y - map_data->final_min_y);
+}
+
+void	center_projection(t_pixel *pixel_data, t_map_data map_data,
+			int *sizex, int *sizey)
+{
+	int	i;
+	int	add_x;
+	int add_y;
+
+	add_x = ((((*sizex) / 2) - map_data.real_width) / 2) - map_data.final_min_x;
+	add_y = ((((*sizey) / 2) - map_data.real_height) / 2) - map_data.final_min_y;
+	ft_printf("add_x: %d\n", add_x);
+	ft_printf("add_y: %d\n", add_y);
+	ft_printf("Size X / 2 : %d\n", ((*sizex)/2));
+	ft_printf("Size Y / 2 : %d\n", ((*sizey)/2));
+	ft_printf("real_width : %d\n", map_data.real_width);
+	ft_printf("real_height : %d\n", map_data.real_height);
+	ft_printf("Max X, Min X : %d %d\n", map_data.final_max_x, map_data.final_min_x);
+	ft_printf("Max Y, Min Y : %d %d\n", map_data.final_max_y, map_data.final_min_y);
+	i = 0;
+	while (i < map_data.x * map_data.y)
+	{
+		pixel_data[i].real_x += add_x;
+		pixel_data[i].real_y += add_y;
+		i++;
+	}
+	print_buffered_data(pixel_data, map_data);
 }
 
 void	adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data)

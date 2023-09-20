@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/19 19:28:45 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:27:18 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,7 @@ char		*corrected_hex(char *number);
 
 // Calculations.c
 void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
-				double angle);
-void		scale_projection(t_pixel *pixel_data, t_map_data *map_data,
-				int distance);
+				double angle, int distance);
 double		degree_to_rad(double angle);
 void		adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data);
 void		adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data);
@@ -114,7 +112,8 @@ void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
 void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
-int			pixel_distance(t_map_data map_data, int *sizex, int *sizey);
+int			pixel_distance(int *sizex, int *sizey, t_map_data map_data);
+
 
 /// Bresenhaim.c
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,

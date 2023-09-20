@@ -6,14 +6,14 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 22:21:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/19 19:34:29 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:20:58 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 void	calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
-			double angle)
+			double angle, int distance)
 {
 	int	i;
 
@@ -21,37 +21,20 @@ void	calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
 	angle = degree_to_rad(angle);
 	while (i < map_data->x * map_data->y)
 	{
-		pixel_data[i].real_x = ((pixel_data[i].x - pixel_data[i].y) * cos(angle)) * 100;
+		pixel_data[i].real_x = ((pixel_data[i].x - pixel_data[i].y) * cos(angle)) * distance;
 		pixel_data[i].real_y = ((pixel_data[i].x + pixel_data[i].y) * sin(angle)
-			 - pixel_data[i].z) * 100;
+			 - pixel_data[i].z) * distance;
+		i++;
+	}
+	i = 0;
+	while (i < map_data->x * map_data->y)
+	{
 		if (pixel_data[i].z > 0)
 			pixel_data[i].color = 0xFF0000;
 		i++;
 	}
 	adjust_map_real_width(pixel_data, map_data);
 	adjust_map_real_height(pixel_data, map_data);
-	print_buffered_data(pixel_data, *map_data);
-}
-
-void	scale_projection(t_pixel *pixel_data, t_map_data *map_data, int distance)
-{
-	int	i;
-
-	print_buffered_data(pixel_data, *map_data);
-	distance = 20;
-	i = 0;
-	while (i < map_data->x * map_data->y)
-	{
-		pixel_data[i].real_x = pixel_data[i].real_x * distance / 100;
-		pixel_data[i].real_y = pixel_data[i].real_y * distance / 100;
-		i++;
-	}
-	print_buffered_data(pixel_data, *map_data);
-}
-
-double	degree_to_rad(double angle)
-{
-	return ((M_PI * angle / 180.0));
 }
 
 void	adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data)
@@ -110,4 +93,9 @@ void	adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data)
 			i++;
 		}
 	}
+}
+
+double	degree_to_rad(double angle)
+{
+	return ((M_PI * angle / 180.0));
 }

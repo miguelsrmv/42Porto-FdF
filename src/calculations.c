@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 22:21:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 18:50:06 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:15:05 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,6 @@ void	center_projection(t_pixel *pixel_data, t_map_data map_data,
 
 	add_x = ((((*sizex) / 2) - map_data.real_width) / 2) - map_data.final_min_x;
 	add_y = ((((*sizey) / 2) - map_data.real_height) / 2) - map_data.final_min_y;
-	ft_printf("add_x: %d\n", add_x);
-	ft_printf("add_y: %d\n", add_y);
-	ft_printf("Size X / 2 : %d\n", ((*sizex)/2));
-	ft_printf("Size Y / 2 : %d\n", ((*sizey)/2));
-	ft_printf("real_width : %d\n", map_data.real_width);
-	ft_printf("real_height : %d\n", map_data.real_height);
-	ft_printf("Max X, Min X : %d %d\n", map_data.final_max_x, map_data.final_min_x);
-	ft_printf("Max Y, Min Y : %d %d\n", map_data.final_max_y, map_data.final_min_y);
 	i = 0;
 	while (i < map_data.x * map_data.y)
 	{

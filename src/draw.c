@@ -6,11 +6,11 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 09:37:01 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/15 19:06:56 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 23:36:20 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	my_pixel_put(t_img_data *img, int x, int y, int color)
 {

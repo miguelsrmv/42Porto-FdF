@@ -6,11 +6,11 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:06:14 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:23:04 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 23:36:31 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int	get_scale(t_map_data map_data, int *sizex, int *sizey)
 {

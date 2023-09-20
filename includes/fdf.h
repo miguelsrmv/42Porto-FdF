@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:38:03 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 23:39:37 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "libft.h"
+# include "../src/libft/libft.h"
 # include <math.h>
 
 // Macros
@@ -121,8 +121,8 @@ void		exit_error(int exit_code, t_pixel *pixel_data,
 
 ///Window.c
 void		start_service(t_pixel *pixel_data, t_map_data map_data);
-void		process_data_to_window(t_pixel *pixel_data, t_map_data map_data,
-				int *sizex, int *sizey);
+// void		process_data_to_window(t_pixel *pixel_data, t_map_data map_data,
+//				int *sizex, int *sizey);
 void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
 void		draw_lines(t_pixel *pixel_data, t_map_data map_data,

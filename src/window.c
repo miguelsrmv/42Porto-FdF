@@ -6,11 +6,11 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:26:47 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 23:39:45 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	start_service(t_pixel *pixel_data, t_map_data map_data)
 {
@@ -26,7 +26,10 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 	mlx_get_screen_size(mlx_service, sizex, sizey);
 	mlx_win = mlx_new_window(mlx_service, ((*sizex) / 2) + (PADDING * 2),
 			((*sizey) / 2) + (PADDING * 2), "FdF");
-	process_data_to_window(pixel_data, map_data, sizex, sizey);
+	// process_data_to_window(pixel_data, map_data, sizex, sizey);
+	calculate_projection(pixel_data, &map_data, ANGLE);
+	resize_projection(pixel_data, &map_data, get_scale(map_data, sizex, sizey));
+	center_projection(pixel_data, map_data, sizex, sizey);
 	img.img = mlx_new_image(mlx_service, ((*sizex) / 2) + 1,
 			((*sizey) / 2) + 1);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
@@ -39,14 +42,12 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 		PADDING, PADDING);
 	mlx_loop(mlx_service);
 }
-
+/*
 void	process_data_to_window(t_pixel *pixel_data, t_map_data map_data,
 			int *sizex, int *sizey)
 {
-	calculate_projection(pixel_data, &map_data, ANGLE);
-	resize_projection(pixel_data, &map_data, get_scale(map_data, sizex, sizey));
-	center_projection(pixel_data, map_data, sizex, sizey);
-}
+
+}*/
 
 void	draw_pixels(t_pixel *pixel_data, t_map_data map_data, t_img_data img)
 {

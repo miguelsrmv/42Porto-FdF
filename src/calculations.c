@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 22:21:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 19:26:43 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:47:27 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	resize_projection(t_pixel *pixel_data, t_map_data *map_data, int distance)
 	map_data->final_max_y = INT_MIN;
 	map_data->final_min_x = INT_MAX;
 	map_data->final_min_y = INT_MAX;
+	ft_printf("Real Width: %d\n", map_data->real_width);
+	ft_printf("Real Height: %d\n", map_data->real_height);
+	print_buffered_data(pixel_data, *map_data);
 	while (i < map_data->x * map_data->y)
 	{
 		pixel_data[i].real_x = pixel_data[i].calc_x * distance;

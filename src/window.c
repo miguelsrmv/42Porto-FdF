@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 19:26:02 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:53:27 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int get_scale(t_map_data map_data, int *sizex, int *sizey)
 	int width_scale_limit;
 	int height_scale_limit;
 
-	width_scale_limit = ((*sizex) / 2) / map_data.real_width;
-	height_scale_limit = ((*sizey) / 2) / map_data.real_height;
+	width_scale_limit = ((*sizex) / 2) / (map_data.real_width + 1);
+	height_scale_limit = ((*sizey) / 2) / (map_data.real_height + 1);
 	if (width_scale_limit > height_scale_limit)
 		return (height_scale_limit);
 	else

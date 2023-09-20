@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:18:41 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:25:37 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void		adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data);
 double		degree_to_rad(double angle);
 
 // Calculations_Resize_Center.c
+int			get_scale(t_map_data map_data, int *sizex, int *sizey);
 void		resize_projection(t_pixel *pixel_data, t_map_data *map_data,
 				int distance);
 void		center_projection(t_pixel *pixel_data, t_map_data map_data,
@@ -120,11 +121,12 @@ void		exit_error(int exit_code, t_pixel *pixel_data,
 
 ///Window.c
 void		start_service(t_pixel *pixel_data, t_map_data map_data);
+void		process_data_to_window(t_pixel *pixel_data, t_map_data map_data,
+				int *sizex, int *sizey);
 void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
 void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
 				t_img_data img);
-int			get_scale(t_map_data map_data, int *sizex, int *sizey);
 
 /// Bresenhaim.c
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,

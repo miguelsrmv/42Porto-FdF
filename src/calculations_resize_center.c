@@ -6,11 +6,24 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:06:14 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:17:10 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:23:04 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	get_scale(t_map_data map_data, int *sizex, int *sizey)
+{
+	int	width_scale_limit;
+	int	height_scale_limit;
+
+	width_scale_limit = ((*sizex) / 2) / (map_data.real_width + 1);
+	height_scale_limit = ((*sizey) / 2) / (map_data.real_height + 1);
+	if (width_scale_limit > height_scale_limit)
+		return (height_scale_limit);
+	else
+		return (width_scale_limit);
+}
 
 void	resize_projection(t_pixel *pixel_data, t_map_data *map_data,
 			int distance)

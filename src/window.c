@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:26:08 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:26:47 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw_pixels(t_pixel *pixel_data, t_map_data map_data, t_img_data img)
 	}
 }
 
-void	draw_lines(t_pixel *pixel_data, t_map_data map_data, t_img_data img)	
+void	draw_lines(t_pixel *pixel_data, t_map_data map_data, t_img_data img)
 {
 	int	rows;
 	int	i;

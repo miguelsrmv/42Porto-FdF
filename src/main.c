@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 08:27:20 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 20:28:52 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:29:33 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,4 @@ int	main(int argc, char **argv)
 // - Check MLX Loop for pressing X
 // - Check MLX Loop for pressing ESC
 // - Check Projections
+// - Do I need Z Max and Z Min ?

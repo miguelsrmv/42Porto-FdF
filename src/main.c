@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 08:27:20 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/21 21:02:49 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:57:59 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int argc, char **argv)
 }
 
 // To Do:
-// - Makefile?!?!
 // - Process Data to window??
 // - Check colors
 // - Check MLX Loop for pressing X

@@ -6,7 +6,7 @@
 #    By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/21 21:57:21 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/21 21:58:28 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ INCFLAGS =  -I $(INCDIR) -I $(LIBFTDIR) -I $(MLXDIR)
 all: libft $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLXLIBS) -o $(NAME)
+	@ $(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLXLIBS) -o $(NAME)
 
 $(SRCDIR)/%.o: $(SRCDIR)/%.c $(INCDIR)/*.h $(MLXDIR)/*.h
-	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
+	@ $(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
 
 libft:
 	@ cd $(LIBFTDIR) && make -s && make -s clean

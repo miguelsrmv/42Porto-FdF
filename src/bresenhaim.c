@@ -6,11 +6,11 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:14:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 23:36:29 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:03:18 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 void	plot_line_point(t_img_data img, t_bresenhaim b, int color)
 {

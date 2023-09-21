@@ -6,11 +6,11 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 22:23:51 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 23:36:35 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:02:58 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 void	exit_error(int exit_code, t_pixel *pixel_data,
 			char *buffer1, char *buffer2)

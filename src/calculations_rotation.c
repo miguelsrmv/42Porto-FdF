@@ -6,11 +6,11 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 22:21:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 23:36:33 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:03:08 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 void	calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
 			double angle)

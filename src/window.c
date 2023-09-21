@@ -6,11 +6,11 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/20 23:39:45 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:02:34 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 void	start_service(t_pixel *pixel_data, t_map_data map_data)
 {

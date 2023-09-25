@@ -29,7 +29,6 @@ t_map_data	get_map_data(char *input_map)
 	create_total_buffer(line, input_fd, &map_data, &total_buffer);
 	if (close(input_fd) == -1)
 		exit_error(CLOSE_ERROR, NULL, total_buffer, NULL);
-	get_min_and_max(&map_data, total_buffer);
 	free(total_buffer);
 	return (map_data);
 }
@@ -88,27 +87,4 @@ char	*trim_line(char *line)
 	trim_line[i++] = '\0';
 	free(line);
 	return (trim_line);
-}
-
-void	get_min_and_max(t_map_data *map_data, char *total_buffer)
-{
-	int		i;
-	char	**small_buffer;
-	char	**tiny_buffer;
-
-	i = 0;
-	map_data->z_min = INT_MAX;
-	map_data->z_max = INT_MIN;
-	small_buffer = ft_split(total_buffer, ' ');
-	while (small_buffer[i])
-	{
-		tiny_buffer = ft_split((char const *)small_buffer[i], ',');
-		if (map_data->z_max < ft_atoi(*tiny_buffer))
-			map_data->z_max = ft_atoi(*tiny_buffer);
-		if (map_data->z_min > ft_atoi(*tiny_buffer))
-			map_data->z_min = ft_atoi(*tiny_buffer);
-		i++;
-		ft_free_tabs((void **)tiny_buffer);
-	}
-	ft_free_tabs((void **)small_buffer);
 }

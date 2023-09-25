@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 18:50:09 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:08:30 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct s_img_data {
 typedef struct s_map_data {
 	int		x;
 	int		y;
-	int		z_min;
-	int		z_max;
 	int		real_width;
 	int		real_height;
 	int		final_min_x;
@@ -108,7 +106,6 @@ void		create_total_buffer(char *line, int input_fd, t_map_data *map_data,
 				char **total_buffer);
 int			count_size(char *line);
 char		*trim_line(char *line);
-void		get_min_and_max(t_map_data *map_data, char *total_buffer);
 
 // Pixel_data.c
 void		fill_pixel_data(t_pixel *pixel_data, t_map_data *map_data,
@@ -156,17 +153,5 @@ int			interpolate_color(t_pixel pixel_from, t_pixel pixel_to,
 
 /// Hooks.c
 int			cross_pressed(int keycode, void *mlx_service);
-
-/// Helpers
-void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);
-void		draw_horizontal_line(t_img_data *img, t_map_data map_data, int y);
-void		draw_vertical_line(t_img_data *img, t_map_data map_data, int x);
-
-/*
-/// Valid_map
-void    check_valid_map(char *input);
-void    check_name(char *input);
-void    check_size(char *input);
-*/
 
 #endif

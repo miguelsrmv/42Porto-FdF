@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:14:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 18:36:22 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:07:48 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, t_img_data img)
 	float			interpolation_param;
 	int				interpolated_color;
 	int				i;
-
 
 	init_bresenham(&b, &pixel_from, &pixel_to);
 	distance = sqrt(pow(pixel_to.real_x - pixel_from.real_x, 2)

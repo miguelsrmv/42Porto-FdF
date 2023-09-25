@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 16:04:08 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:10:19 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,4 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data,
 	mlx_loop(mlx_service);
 	clean_data(pixel_data, screen_data);
 	clean_mlx(img.img, mlx_win, mlx_service);
-}
-
-void	process_and_draw_image(t_pixel *pixel_data, t_map_data *map_data,
-			t_screen *screen_data, t_img_data *img)
-{
-	calculate_projection(pixel_data, map_data, ANGLE);
-	resize_projection(pixel_data, map_data, get_scale(*map_data, screen_data->x,
-			screen_data->y));
-	center_projection(pixel_data, *map_data, screen_data->x, screen_data->y);
-	draw_image(pixel_data, *map_data, *img);
 }

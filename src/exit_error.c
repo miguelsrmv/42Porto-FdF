@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 22:23:51 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 15:02:46 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:39:25 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,17 @@ void	exit_error(int exit_code, t_pixel *pixel_data,
 	exit(exit_code);
 }
 
-void	clean_exit(t_pixel *pixel_data, t_window window, void *mlx_win, void *mlx_service)
+void	clean_data(t_pixel *pixel_data, t_screen screen)
 {
-	free(window.sizex);
-	free(window.sizey);
+	free(screen.x);
+	free(screen.y);
 	free(pixel_data);
+}
+
+void	clean_mlx(void *img, void *mlx_win, void *mlx_service)
+{
+	mlx_destroy_image(mlx_service, img);
 	mlx_destroy_window(mlx_service, mlx_win);
 	mlx_destroy_display(mlx_service);
-	free(mlx_win);
+	free(mlx_service);
 }

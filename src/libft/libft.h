@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:15:57 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 11:59:37 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:36:53 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int		ft_fprintf(int fd, const char *string, ...);
 int		check_arg_fd(char *string, int *i, va_list args);
 void	ft_free_tabs(void **tab);
 int		ft_atoi_base(char *str, char *base);
-void	ft_int_swap(int *a, int *n);
 int		ft_abs(int a);
 void	ft_swap(void *a, void *b, size_t size);
 char	*ft_str_tolower(char *str);

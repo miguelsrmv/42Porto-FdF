@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 17:58:47 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:14:07 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ void		init_bresenham(t_bresenhaim *b, t_pixel *pixel_from,
 				t_pixel *pixel_to);
 void		update_coordinates(t_bresenhaim *b, t_pixel pixel_from,
 				t_pixel pixel_to);
-int			interpolate_color(t_pixel pixel_to, t_pixel pixel_from,
-				int interpolation_param);
+int			interpolate_color(t_pixel pixel_from, t_pixel pixel_to,
+				float interpolation_param);
 
 /// Hooks.c
 int			cross_pressed(int keycode, void *mlx_service);

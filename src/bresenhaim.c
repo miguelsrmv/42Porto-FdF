@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:14:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 18:03:34 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:36:22 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	init_bresenham(t_bresenhaim *b, t_pixel *pixel_from, t_pixel *pixel_to)
 		> ft_abs(pixel_to->real_x - pixel_from->real_x);
 	if (b->steep)
 	{
-		ft_int_swap(&pixel_from->real_x, &pixel_from->real_y);
-		ft_int_swap(&pixel_to->real_x, &pixel_to->real_y);
-		ft_int_swap(&pixel_to->color, &pixel_to->color);
+		ft_swap(&pixel_from->real_x, &pixel_from->real_y, sizeof(int));
+		ft_swap(&pixel_to->real_x, &pixel_to->real_y, sizeof(int));
 	}
 	if (pixel_from->real_x > pixel_to->real_x)
 	{
-		ft_int_swap(&pixel_from->real_x, &pixel_to->real_x);
-		ft_int_swap(&pixel_from->real_y, &pixel_to->real_y);
-		ft_int_swap(&pixel_from->color, &pixel_to->color);
+		ft_swap(&pixel_from->real_x, &pixel_to->real_x, sizeof(int));
+		ft_swap(&pixel_from->real_y, &pixel_to->real_y, sizeof(int));
+		ft_swap(&pixel_from->color, &pixel_to->color, sizeof(int));
+		ft_swap(&pixel_from->rgb, &pixel_to->rgb, sizeof(t_rgb));
 	}
 	b->current_x = pixel_from->real_x;
 	b->current_y = pixel_from->real_y;
@@ -58,8 +58,8 @@ void	update_coordinates(t_bresenhaim *b, t_pixel pixel_from,
 	b->current_x++;
 }
 
-int	interpolate_color(t_pixel pixel_to, t_pixel pixel_from,
-			int interpolation_param)
+int	interpolate_color(t_pixel pixel_from, t_pixel pixel_to,
+			float interpolation_param)
 {
 	int		interpolated_color;
 	t_rgb	interpolated_rgb;
@@ -78,10 +78,11 @@ int	interpolate_color(t_pixel pixel_to, t_pixel pixel_from,
 void	line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, t_img_data img)
 {
 	t_bresenhaim	b;
-	int				distance;
+	float			distance;
+	float			interpolation_param;
 	int				interpolated_color;
 	int				i;
-	float			interpolation_param;
+
 
 	init_bresenham(&b, &pixel_from, &pixel_to);
 	distance = sqrt(pow(pixel_to.real_x - pixel_from.real_x, 2)
@@ -89,8 +90,8 @@ void	line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, t_img_data img)
 	i = 0;
 	while (b.current_x < pixel_to.real_x)
 	{
-		interpolation_param = (float)i / (float)distance;
-		interpolated_color = interpolate_color(pixel_to, pixel_from,
+		interpolation_param = ((float)i / distance);
+		interpolated_color = interpolate_color(pixel_from, pixel_to,
 				interpolation_param);
 		update_coordinates(&b, pixel_from, pixel_to);
 		plot_line_point(img, b, interpolated_color);

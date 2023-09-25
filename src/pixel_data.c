@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 19:00:29 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 12:06:12 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:10:00 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ int	get_color(char *hex)
 	int		blue;
 
 	lower_case_hex = ft_str_tolower(hex);
-	hex_color = ft_atoi_base(hex, "0123456789abcdef");
+	hex_color = ft_atoi_base(lower_case_hex, "0123456789abcdef");
 	free(lower_case_hex);
 	red = (hex_color >> 16) & 0xFF;
 	green = (hex_color >> 8) & 0xFF;
 	blue = (hex_color) & 0xFF;
-	return (0x00 << 24 | red << 16 | green << 8 | blue);
+	return (red << 16 | green << 8 | blue);
 }

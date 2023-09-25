@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 18:14:07 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:50:09 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # define INT_MAX 2147483647
 # define ANGLE 30
 # define PADDING 50
-# define DISTANCE 20
 # define ESC_KEY 65307
 
 // Struct typedefs

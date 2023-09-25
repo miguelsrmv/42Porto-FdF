@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 15:34:16 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:42:36 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,8 @@ void		clean_data(t_pixel *pixel_data, t_screen screen);
 void		clean_mlx(void *img, void *mlx_win, void *mlx_service);
 
 ///Window.c
-void		start_service(t_pixel *pixel_data, t_map_data map_data, t_screen window_data);
+void		start_service(t_pixel *pixel_data, t_map_data map_data,
+				t_screen window_data);
 
 /// Bresenhaim.c
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,

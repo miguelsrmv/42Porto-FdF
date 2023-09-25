@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 08:27:20 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 15:09:19 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:43:57 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,9 @@ int	main(int argc, char **argv)
 	screen_data.y = malloc(sizeof(int));
 	if (!(screen_data.x) || !(screen_data.y))
 		exit_error(MALLOC_ERROR, pixel_data, NULL, NULL);
-	//print_buffered_data(pixel_data, map_data);
 	start_service(pixel_data, map_data, screen_data);
 	return (SUCCESS);
 }
-
-// To Do:
-// - Process Data to window??
-// - Check MLX Loop for pressing X
-// - Check MLX Loop for pressing ESC
-// - Check Projections
-// - Do I need Z Max and Z Min ?
+// To Do: 
+//// 1. Organize Draw Functions
+//// 2. Do I need Z min and Z Max ?

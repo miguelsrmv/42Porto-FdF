@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 19:00:29 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/21 21:02:40 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:06:12 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,50 +68,34 @@ void	fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
 void	consider_hex_data(t_pixel *pixel_data, char **split_total_buffer, int i)
 {
 	char	**tiny_buffer;
-	char	*hex;
 
 	if (!ft_strchr(split_total_buffer[i], ','))
 	{
 		pixel_data[i].z = ft_atoi(split_total_buffer[i]);
-		pixel_data[i].color = 0xFFFFFF;
+		pixel_data[i].color = 0xFFFFFFFF;
 	}
 	else
 	{
 		tiny_buffer = ft_split(split_total_buffer[i], ',');
 		pixel_data[i].z = ft_atoi(tiny_buffer[0]);
-		hex = corrected_hex(&tiny_buffer[1][2]);
-		if (!hex)
-		{
-			ft_free_tabs((void **)tiny_buffer);
-			ft_free_tabs((void **)split_total_buffer);
-			exit_error(MALLOC_ERROR, pixel_data, NULL, NULL);
-		}
-		pixel_data[i].color = ft_atoi_base(hex, "0123456789ABCDEF");
-		free(hex);
+		pixel_data[i].color = get_color(&tiny_buffer[1][2]);
 		ft_free_tabs((void **)tiny_buffer);
 	}
 }
 
-char	*corrected_hex(char *number)
+int	get_color(char *hex)
 {
-	char	*corrected_hex;
-	int		i;
+	char	*lower_case_hex;
+	int		hex_color;
+	int		red;
+	int		green;
+	int		blue;
 
-	corrected_hex = (char *)malloc(7 * sizeof(char));
-	if (!corrected_hex)
-		return (NULL);
-	i = 0;
-	while (i < 6)
-	{
-		corrected_hex[i] = '0';
-		i++;
-	}
-	corrected_hex[6] = '\0';
-	i = 0;
-	while (number[i])
-	{
-		corrected_hex[i] = ft_toupper(number[i]);
-		i++;
-	}
-	return (corrected_hex);
+	lower_case_hex = ft_str_tolower(hex);
+	hex_color = ft_atoi_base(hex, "0123456789abcdef");
+	free(lower_case_hex);
+	red = (hex_color >> 16) & 0xFF;
+	green = (hex_color >> 8) & 0xFF;
+	blue = (hex_color) & 0xFF;
+	return (0x00 << 24 | red << 16 | green << 8 | blue);
 }

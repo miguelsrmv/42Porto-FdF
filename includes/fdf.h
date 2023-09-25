@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 16:11:41 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:58:47 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ typedef struct s_map_data {
 	int		final_max_y;
 }				t_map_data;
 
+typedef struct s_rgb {
+	int		red;
+	int		blue;
+	int		green;
+}		t_rgb;
+
 typedef struct s_pixel {
 	int		x;
 	int		y;
@@ -69,6 +75,7 @@ typedef struct s_pixel {
 	double	calc_y;
 	int		real_x;
 	int		real_y;
+	t_rgb	rgb;
 	int		color;
 }				t_pixel;
 
@@ -111,7 +118,7 @@ void		fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
 				char **split_total_buffer);
 void		consider_hex_data(t_pixel *pixel_data, char **split_total_buffer,
 				int i);
-int			get_color(char *hex);
+void		get_color(char *hex, t_pixel *pixel_data);
 
 // Calculations_Rotation.c
 void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
@@ -145,6 +152,8 @@ void		init_bresenham(t_bresenhaim *b, t_pixel *pixel_from,
 				t_pixel *pixel_to);
 void		update_coordinates(t_bresenhaim *b, t_pixel pixel_from,
 				t_pixel pixel_to);
+int			interpolate_color(t_pixel pixel_to, t_pixel pixel_from,
+				int interpolation_param);
 
 /// Hooks.c
 int			cross_pressed(int keycode, void *mlx_service);

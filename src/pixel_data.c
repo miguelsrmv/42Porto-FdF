@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 19:00:29 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 12:10:00 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:56:51 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,30 +72,31 @@ void	consider_hex_data(t_pixel *pixel_data, char **split_total_buffer, int i)
 	if (!ft_strchr(split_total_buffer[i], ','))
 	{
 		pixel_data[i].z = ft_atoi(split_total_buffer[i]);
-		pixel_data[i].color = 0xFFFFFFFF;
+		pixel_data[i].rgb.red = 0xFF;
+		pixel_data[i].rgb.green = 0xFF;
+		pixel_data[i].rgb.blue = 0xFF;
 	}
 	else
 	{
 		tiny_buffer = ft_split(split_total_buffer[i], ',');
 		pixel_data[i].z = ft_atoi(tiny_buffer[0]);
-		pixel_data[i].color = get_color(&tiny_buffer[1][2]);
+		get_color(&tiny_buffer[1][2], &pixel_data[i]);
 		ft_free_tabs((void **)tiny_buffer);
 	}
+	pixel_data[i].color = (pixel_data[i].rgb.red << 16
+			| pixel_data[i].rgb.green << 8
+			| pixel_data[i].rgb.blue);
 }
 
-int	get_color(char *hex)
+void	get_color(char *hex, t_pixel *pixel_data)
 {
 	char	*lower_case_hex;
 	int		hex_color;
-	int		red;
-	int		green;
-	int		blue;
 
 	lower_case_hex = ft_str_tolower(hex);
 	hex_color = ft_atoi_base(lower_case_hex, "0123456789abcdef");
 	free(lower_case_hex);
-	red = (hex_color >> 16) & 0xFF;
-	green = (hex_color >> 8) & 0xFF;
-	blue = (hex_color) & 0xFF;
-	return (red << 16 | green << 8 | blue);
+	pixel_data->rgb.red = (hex_color >> 16) & 0xFF;
+	pixel_data->rgb.green = (hex_color >> 8) & 0xFF;
+	pixel_data->rgb.blue = (hex_color) & 0xFF;
 }

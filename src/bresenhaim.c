@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:14:56 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/21 22:00:11 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:03:34 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,42 @@ void	update_coordinates(t_bresenhaim *b, t_pixel pixel_from,
 	b->current_x++;
 }
 
+int	interpolate_color(t_pixel pixel_to, t_pixel pixel_from,
+			int interpolation_param)
+{
+	int		interpolated_color;
+	t_rgb	interpolated_rgb;
+
+	interpolated_rgb.red = (int)(pixel_from.rgb.red + interpolation_param
+			* (pixel_to.rgb.red - pixel_from.rgb.red));
+	interpolated_rgb.green = (int)(pixel_from.rgb.green + interpolation_param
+			* (pixel_to.rgb.green - pixel_from.rgb.green));
+	interpolated_rgb.blue = (int)(pixel_from.rgb.blue + interpolation_param
+			* (pixel_to.rgb.blue - pixel_from.rgb.blue));
+	interpolated_color = (interpolated_rgb.red << 16)
+		+ (interpolated_rgb.green << 8) + interpolated_rgb.blue;
+	return (interpolated_color);
+}
+
 void	line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to, t_img_data img)
 {
 	t_bresenhaim	b;
-	int				color_gradient;
+	int				distance;
+	int				interpolated_color;
 	int				i;
+	float			interpolation_param;
 
 	init_bresenham(&b, &pixel_from, &pixel_to);
-	color_gradient = (pixel_to.color - pixel_from.color)
-		/ (sqrt(pow(pixel_to.real_x - pixel_from.real_x, 2)
-				+ pow(pixel_to.real_y - pixel_from.real_y, 2)));
-	i = 1;
+	distance = sqrt(pow(pixel_to.real_x - pixel_from.real_x, 2)
+			+ pow(pixel_to.real_y - pixel_from.real_y, 2));
+	i = 0;
 	while (b.current_x < pixel_to.real_x)
 	{
+		interpolation_param = (float)i / (float)distance;
+		interpolated_color = interpolate_color(pixel_to, pixel_from,
+				interpolation_param);
 		update_coordinates(&b, pixel_from, pixel_to);
-		plot_line_point(img, b, pixel_from.color + color_gradient * i);
+		plot_line_point(img, b, interpolated_color);
 		i++;
 	}
 }

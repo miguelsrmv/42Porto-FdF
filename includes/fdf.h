@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 12:02:22 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:16:58 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ANGLE 30
 # define PADDING 50
 # define DISTANCE 20
+# define ESC_KEY 65307
 
 // Struct typedefs
 /// Image data
@@ -99,7 +100,7 @@ void		fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
 				char **split_total_buffer);
 void		consider_hex_data(t_pixel *pixel_data, char **split_total_buffer,
 				int i);
-int			get_color (char *hex);
+int			get_color(char *hex);
 
 // Calculations_Rotation.c
 void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
@@ -136,6 +137,9 @@ void		init_bresenham(t_bresenhaim *b, t_pixel *pixel_from,
 				t_pixel *pixel_to);
 void		update_coordinates(t_bresenhaim *b, t_pixel pixel_from,
 				t_pixel pixel_to);
+
+/// Hooks.c
+int			cross_pressed(int keycode, t_pixel *pixel_data);
 
 /// Helpers
 void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);

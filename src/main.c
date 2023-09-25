@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 08:27:20 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 10:51:13 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:04:02 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 
 // To Do:
 // - Process Data to window??
-// - Check colors
 // - Check MLX Loop for pressing X
 // - Check MLX Loop for pressing ESC
 // - Check Projections

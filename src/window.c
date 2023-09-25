@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/21 21:02:34 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:06:01 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 	mlx_get_screen_size(mlx_service, sizex, sizey);
 	mlx_win = mlx_new_window(mlx_service, ((*sizex) / 2) + (PADDING * 2),
 			((*sizey) / 2) + (PADDING * 2), "FdF");
-	// process_data_to_window(pixel_data, map_data, sizex, sizey);
 	calculate_projection(pixel_data, &map_data, ANGLE);
 	resize_projection(pixel_data, &map_data, get_scale(map_data, sizex, sizey));
 	center_projection(pixel_data, map_data, sizex, sizey);
@@ -40,6 +39,7 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data)
 	free(sizey);
 	mlx_put_image_to_window(mlx_service, mlx_win, img.img,
 		PADDING, PADDING);
+	mlx_key_hook(mlx_win, cross_pressed, mlx_service);
 	mlx_loop(mlx_service);
 }
 /*

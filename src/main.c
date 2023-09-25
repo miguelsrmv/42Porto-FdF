@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 08:27:20 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 15:43:57 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:14:36 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,3 @@ int	main(int argc, char **argv)
 	start_service(pixel_data, map_data, screen_data);
 	return (SUCCESS);
 }
-// To Do: 
-//// 1. Organize Draw Functions
-//// 2. Do I need Z min and Z Max ?

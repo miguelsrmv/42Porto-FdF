@@ -6,7 +6,7 @@
 #    By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/25 19:08:59 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/25 19:12:06 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ LIBFTDIR =  src/libft
 
 MLXDIR  = 	mlx_linux
 
-SRC		=	main.c draw.c map_data.c pixel_data.c exit_error.c window.c \
+SRC		=	main.c map_data.c pixel_data.c mlx_service.c hooks.c \
 			calculations_rotation.c calculations_resize_center.c \
-			bresenhaim.c hooks.c
+			bresenhaim.c draw.c data_clean.c
 
 LIBS 	=   -L$(LIBFTDIR) -lft
 

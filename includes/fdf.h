@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 19:08:30 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:14:58 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,6 @@ typedef struct s_bresenhaim {
 }		t_bresenhaim;
 
 // Function declarations
-/// Draw.c
-void		my_pixel_put(t_img_data *img, int x, int y, int color);
-void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
-				t_img_data img);
-void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
-				t_img_data img);
-void		process_and_draw_image(t_pixel *pixel_data, t_map_data *map_data,
-				t_screen *screen_data, t_img_data *img);
-
 /// Map_data.c
 t_map_data	get_map_data(char *input_map);
 void		create_total_buffer(char *line, int input_fd, t_map_data *map_data,
@@ -107,7 +98,7 @@ void		create_total_buffer(char *line, int input_fd, t_map_data *map_data,
 int			count_size(char *line);
 char		*trim_line(char *line);
 
-// Pixel_data.c
+/// Pixel_data.c
 void		fill_pixel_data(t_pixel *pixel_data, t_map_data *map_data,
 				char *input_map);
 void		fill_from_buffer(t_pixel *pixel_data, t_map_data map_data,
@@ -116,29 +107,32 @@ void		consider_hex_data(t_pixel *pixel_data, char **split_total_buffer,
 				int i);
 void		get_color(char *hex, t_pixel *pixel_data);
 
-// Calculations_Rotation.c
+/// Mlx_service.c
+void		start_service(t_pixel *pixel_data, t_map_data map_data,
+				t_screen window_data);
+
+/// Calculations_Rotation.c
 void		calculate_projection(t_pixel *pixel_data, t_map_data *map_data,
 				double angle);
 void		adjust_map_real_width(t_pixel *pixel_data, t_map_data *map_data);
 void		adjust_map_real_height(t_pixel *pixel_data, t_map_data *map_data);
 double		degree_to_rad(double angle);
 
-// Calculations_Resize_Center.c
+/// Calculations_Resize_Center.c
 int			get_scale(t_map_data map_data, int *sizex, int *sizey);
 void		resize_projection(t_pixel *pixel_data, t_map_data *map_data,
 				int distance);
 void		center_projection(t_pixel *pixel_data, t_map_data map_data,
 				int *sizex, int *sizey);
 
-/// Exit_error.c
-void		exit_error(int exit_code, t_pixel *pixel_data,
-				char *buffer1, char *buffer2);
-void		clean_data(t_pixel *pixel_data, t_screen screen);
-void		clean_mlx(void *img, void *mlx_win, void *mlx_service);
-
-///Window.c
-void		start_service(t_pixel *pixel_data, t_map_data map_data,
-				t_screen window_data);
+/// Draw.c
+void		my_pixel_put(t_img_data *img, int x, int y, int color);
+void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
+				t_img_data img);
+void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
+				t_img_data img);
+void		process_and_draw_image(t_pixel *pixel_data, t_map_data *map_data,
+				t_screen *screen_data, t_img_data *img);
 
 /// Bresenhaim.c
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,
@@ -153,5 +147,11 @@ int			interpolate_color(t_pixel pixel_from, t_pixel pixel_to,
 
 /// Hooks.c
 int			cross_pressed(int keycode, void *mlx_service);
+
+/// Data_clean.c
+void		exit_error(int exit_code, t_pixel *pixel_data,
+				char *buffer1, char *buffer2);
+void		clean_data(t_pixel *pixel_data, t_screen screen);
+void		clean_mlx(void *img, void *mlx_win, void *mlx_service);
 
 #endif

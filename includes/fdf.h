@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 14:16:58 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:59:17 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ typedef struct s_pixel {
 	int		color;
 }				t_pixel;
 
+typedef struct s_window {
+	int		*sizex;
+	int		*sizey;
+}			t_window;
+
 typedef struct s_bresenhaim {
 	int		current_x;
 	int		current_y;
@@ -84,6 +89,12 @@ typedef struct s_bresenhaim {
 // Function declarations
 /// Draw.c
 void		my_pixel_put(t_img_data *img, int x, int y, int color);
+void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
+				t_img_data img);
+void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
+				t_img_data img);
+void		draw_image(t_pixel *pixel_data, t_map_data map_data,
+				t_img_data img);
 
 /// Map_data.c
 t_map_data	get_map_data(char *input_map);
@@ -119,15 +130,10 @@ void		center_projection(t_pixel *pixel_data, t_map_data map_data,
 /// Exit_error.c
 void		exit_error(int exit_code, t_pixel *pixel_data,
 				char *buffer1, char *buffer2);
+void		clean_exit(t_pixel *pixel_data, t_window window, void *mlx_win, void *mlx_service);
 
 ///Window.c
-void		start_service(t_pixel *pixel_data, t_map_data map_data);
-// void		process_data_to_window(t_pixel *pixel_data, t_map_data map_data,
-//				int *sizex, int *sizey);
-void		draw_pixels(t_pixel *pixel_data, t_map_data map_data,
-				t_img_data img);
-void		draw_lines(t_pixel *pixel_data, t_map_data map_data,
-				t_img_data img);
+void		start_service(t_pixel *pixel_data, t_map_data map_data, t_window window_data);
 
 /// Bresenhaim.c
 void		line_bresenhaim(t_pixel pixel_from, t_pixel pixel_to,
@@ -139,7 +145,7 @@ void		update_coordinates(t_bresenhaim *b, t_pixel pixel_from,
 				t_pixel pixel_to);
 
 /// Hooks.c
-int			cross_pressed(int keycode, t_pixel *pixel_data);
+int			cross_pressed(int keycode, void *mlx_service);
 
 /// Helpers
 void		print_buffered_data(t_pixel *pixel_data, t_map_data map_data);

@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 22:23:51 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/21 21:02:58 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:02:46 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,14 @@ void	exit_error(int exit_code, t_pixel *pixel_data,
 	else if (exit_code == MALLOC_ERROR)
 		ft_fprintf(STDERR_FILENO, MALLOC_ERROR_MSG);
 	exit(exit_code);
+}
+
+void	clean_exit(t_pixel *pixel_data, t_window window, void *mlx_win, void *mlx_service)
+{
+	free(window.sizex);
+	free(window.sizey);
+	free(pixel_data);
+	mlx_destroy_window(mlx_service, mlx_win);
+	mlx_destroy_display(mlx_service);
+	free(mlx_win);
 }

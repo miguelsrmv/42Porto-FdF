@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:16:13 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 20:50:26 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:36:58 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	start_service(t_pixel *pixel_data, t_map_data map_data,
 	process_and_draw_image(pixel_data, &map_data, &screen_data, &img);
 	mlx_put_image_to_window(mlx_service, mlx_win, img.img,
 		PADDING, PADDING);
-	mlx_key_hook(mlx_win, cross_pressed, mlx_service);
-	mlx_hook(mlx_win, 17, 1L << 17, mlx_loop_end, mlx_service);
+	set_hooks(mlx_win, mlx_service);
 	mlx_loop(mlx_service);
 	clean_data(pixel_data, screen_data);
 	clean_mlx(img.img, mlx_win, mlx_service);

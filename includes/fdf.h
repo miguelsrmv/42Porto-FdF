@@ -6,7 +6,7 @@
 /*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:11:18 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 20:50:22 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:37:33 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ int			interpolate_color(t_pixel pixel_from, t_pixel pixel_to,
 				float interpolation_param);
 
 /// Hooks.c
-int			cross_pressed(int keycode, void *mlx_service);
+int			esc_pressed(int keycode, void *mlx_service);
+void		set_hooks(void *mlx_win, void *mlx_service);
 
 /// Data_clean.c
 void		exit_error(int exit_code, t_pixel *pixel_data,

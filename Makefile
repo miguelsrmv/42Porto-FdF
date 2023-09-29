@@ -6,7 +6,7 @@
 #    By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/29 14:07:10 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/29 14:28:41 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC		=	main.c map_data.c pixel_data.c mlx_service.c hooks.c \
 
 LIBS 	=   -L$(LIBFTDIR) -lft
 
-MLXLIBS =   -L$(MLXDIR) -lmlx -lXext -lX11 -lm -lbsd
+MLXLIBS =   -L$(MLXDIR) -lmlx -lXext -lX11 -lm
 
 OBJS	= 	$(addprefix $(SRCDIR)/, $(SRC:.c=.o))
 

@@ -6,7 +6,7 @@
 #    By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/29 12:45:00 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/29 14:07:10 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ RM      = 	rm -rf
 INCFLAGS =  -I $(INCDIR) -I $(LIBFTDIR) -I $(MLXDIR)
 
 
-all: libft $(NAME) 
+all: libft minilibx $(NAME) 
 
 $(NAME): $(OBJS) 
 	@ $(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLXLIBS) -o $(NAME)
@@ -50,14 +50,24 @@ $(SRCDIR)/%.o: $(SRCDIR)/%.c $(INCDIR)/*.h $(MLXDIR)/*.h
 libft:
 	@ cd $(LIBFTDIR) && make -s && make -s clean
 
+minilibx:
+	@ cd minilibx-linux && make -s
+
 clean:
 	@ $(MAKE) -s -C $(LIBFTDIR) clean
+	@ cd minilibx-linux && make clean
 	@ $(RM) $(OBJS)
 
 fclean: clean
 	@ $(MAKE) -s -C $(LIBFTDIR) fclean
+	@ cd minilibx-linux && make clean
 	@ $(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re libft
+download:
+	@ wget https://cdn.intra.42.fr/document/document/20785/minilibx-linux.tgz
+	@ tar -xzf minilibx-linux.tgz
+	@ rm minilibx-linux.tgz
+
+.PHONY: all clean fclean re libft minilibx download

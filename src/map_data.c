@@ -24,7 +24,10 @@ t_map_data	get_map_data(char *input_map)
 		exit_error(OPEN_ERROR, NULL, NULL, NULL);
 	line = trim_line(get_next_line(input_fd));
 	if (!line)
+	{
+		close(input_fd);
 		exit_error(OPEN_ERROR, NULL, NULL, NULL);
+	}
 	map_data.x = count_size(line);
 	map_data.y = 0;
 	total_buffer = ft_strdup("");

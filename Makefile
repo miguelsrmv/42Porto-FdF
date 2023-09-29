@@ -6,7 +6,7 @@
 #    By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/29 12:26:49 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/29 12:45:00 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ clean:
 
 fclean: clean
 	@ $(MAKE) -s -C $(LIBFTDIR) fclean
-	@ $(RM) $(NAME) minilibx-linux minilibx-linux.tgz
+	@ $(RM) $(NAME)
 
 re: fclean all
 

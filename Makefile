@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+         #
+#    By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 09:55:46 by mde-sa--          #+#    #+#              #
-#    Updated: 2023/09/25 19:12:06 by mde-sa--         ###   ########.fr        #
+#    Updated: 2023/09/29 12:26:49 by mde-sa--         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ INCDIR	=   includes
 
 LIBFTDIR =  src/libft
 
-MLXDIR  = 	mlx_linux
+MLXDIR  = 	minilibx-linux
 
 SRC		=	main.c map_data.c pixel_data.c mlx_service.c hooks.c \
 			calculations_rotation.c calculations_resize_center.c \
@@ -30,7 +30,7 @@ SRC		=	main.c map_data.c pixel_data.c mlx_service.c hooks.c \
 
 LIBS 	=   -L$(LIBFTDIR) -lft
 
-MLXLIBS =   -L$(MLXDIR) -lmlx -lXext -lX11 -lm -lz -lft
+MLXLIBS =   -L$(MLXDIR) -lmlx -lXext -lX11 -lm -lbsd
 
 OBJS	= 	$(addprefix $(SRCDIR)/, $(SRC:.c=.o))
 
@@ -39,9 +39,9 @@ RM      = 	rm -rf
 INCFLAGS =  -I $(INCDIR) -I $(LIBFTDIR) -I $(MLXDIR)
 
 
-all: libft $(NAME)
+all: libft $(NAME) 
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) 
 	@ $(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLXLIBS) -o $(NAME)
 
 $(SRCDIR)/%.o: $(SRCDIR)/%.c $(INCDIR)/*.h $(MLXDIR)/*.h
@@ -56,7 +56,7 @@ clean:
 
 fclean: clean
 	@ $(MAKE) -s -C $(LIBFTDIR) fclean
-	@ $(RM) $(NAME)
+	@ $(RM) $(NAME) minilibx-linux minilibx-linux.tgz
 
 re: fclean all
 

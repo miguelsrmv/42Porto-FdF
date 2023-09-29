@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-sa-- <mde-sa--@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: mde-sa-- <mde-sa--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:15:57 by mde-sa--          #+#    #+#             */
-/*   Updated: 2023/09/25 18:36:53 by mde-sa--         ###   ########.fr       */
+/*   Updated: 2023/09/29 12:13:58 by mde-sa--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,5 @@ int		ft_abs(int a);
 void	ft_swap(void *a, void *b, size_t size);
 char	*ft_str_tolower(char *str);
 char	*ft_str_toupper(char *str);
+int		ft_checkextension(const char *str, const char *suffix);
 #endif
